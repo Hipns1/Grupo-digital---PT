@@ -4,12 +4,11 @@ const App = () => {
 
     const [data, setData] = useState([])
 
-    const busqueda = "www.thecocktaildb.com/api/json/v1/1/search.php?s=Brandy"
+    const random = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
     const getData = async () => {
-        const response = await fetch(busqueda)
+        const response = await fetch(random)
         const data = await response.json()
-        console.log(data)
         setData(data)
     }
 
@@ -21,7 +20,17 @@ const App = () => {
 
     return (
         <div>
-
+            {
+                data.drinks && data.drinks.map(drink => {
+                    return (
+                        <div key={drink.idDrink}>
+                            <h1>{drink.strDrink}</h1>
+                            <img src={drink.strDrinkThumb} alt=""
+                                style={{ width: "200px" }} />
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }
