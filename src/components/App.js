@@ -20,7 +20,11 @@ const App = () => {
 
     const handleChange = (e) => {
         setQuery(e.target.value)
-        getData(busqueda)
+        if (e.target.value === '') {
+            setData()
+        } else {
+            getData(busqueda)
+        }
     }
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -29,7 +33,7 @@ const App = () => {
         localStorage.setItem('drink', JSON.stringify(drink))
         navigate("/detail")
     }
-    const handleAdd = (drink) =>{
+    const handleAdd = (drink) => {
         dispatch(addSync(drink))
     }
 
@@ -51,7 +55,9 @@ const App = () => {
                                     <img src={drink.strDrinkThumb} alt="" />
                                     <h1>{drink.strDrink}</h1>
                                     <div className={styles.app_btns}>
-                                        <button onClick={() => handleDetail(drink)}>Detail</button>
+                                        <button 
+                                        styles={{backgroundColor: '#f5f5f5'}}
+                                        onClick={() => handleDetail(drink)}>Detail</button>
                                         <button onClick={handleAdd}>Favorite</button>
                                     </div>
                                 </div>
