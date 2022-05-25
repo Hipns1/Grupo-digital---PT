@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { logoutAsync } from '../Redux/actions/actionLogin';
+import styles from "../Styles/App.module.scss"
 
 const App = () => {
 
@@ -25,11 +25,6 @@ const App = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const handleLogout = () => {
-        dispatch(logoutAsync())
-        navigate("/login")
-    }
-
     const handleDetail = (drink) => {
         localStorage.setItem('drink', JSON.stringify(drink))
         navigate("/detail")
@@ -40,27 +35,30 @@ const App = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Cocktail App</h1>
-            <button onClick={() => handleLogout()}>LOGOUT</button>
-            <input
-                type="text"
-                placeholder="Buscar"
-                onChange={handleChange}
-            />
-            {
-                data.drinks && data.drinks.map(drink => {
-                    return (
-                        <div key={drink.idDrink}>
-                            <h1>{drink.strDrink}</h1>
-                            <img src={drink.strDrinkThumb} alt=""
-                                style={{ width: "200px" }} />
-                            <button onClick={() => handleDetail(drink)}>Detail</button>
-                            <button>Favorite</button>
-                        </div>
-                    )
-                })
-            }
+        <div className={styles.app_container}>
+            <div className={styles.app_input}>
+                <input
+                    type="text"
+                    placeholder="Search a cocktail..."
+                    onChange={handleChange}
+                />
+            </div>
+            <div className={styles.app_card__container}>
+                {
+                    data.drinks && data.drinks.map(drink => {
+                        return (
+                            <div key={drink.idDrink} className={styles.app_card}>
+                                <img src={drink.strDrinkThumb} alt="" />
+                                <h1>{drink.strDrink}</h1>
+                                <div className={styles.app_btns}>
+                                    <button onClick={() => handleDetail(drink)}>Detail</button>
+                                    <button>Favorite</button>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
