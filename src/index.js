@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { store } from '../src/Redux/store/store.js'
-import AppRoutes from './Routers/AppRoutes'
+import DashboardRoutes from './Routers/DashboardRoutes.js'
 
 ReactDOM.render(
 	<Provider store={store}>
-		<AppRoutes />
+		<DashboardRoutes />
 	</Provider>,
 	document.getElementById('root')
 )
