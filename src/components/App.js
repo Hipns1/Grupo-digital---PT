@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import styles from "../Styles/App.module.scss"
+import search from "../Styles/Images/SEARCH.svg"
 
 const App = () => {
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState()
     const [query, setQuery] = useState('')
 
-    const random = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     const busqueda = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
 
     const getData = async (url) => {
@@ -22,17 +22,12 @@ const App = () => {
         getData(busqueda)
     }
 
-    const dispatch = useDispatch();
     const navigate = useNavigate()
 
     const handleDetail = (drink) => {
         localStorage.setItem('drink', JSON.stringify(drink))
         navigate("/detail")
     }
-
-    useEffect(() => {
-        getData(random)
-    }, [])
 
     return (
         <div className={styles.app_container}>
@@ -45,18 +40,23 @@ const App = () => {
             </div>
             <div className={styles.app_card__container}>
                 {
-                    data.drinks && data.drinks.map(drink => {
-                        return (
-                            <div key={drink.idDrink} className={styles.app_card}>
-                                <img src={drink.strDrinkThumb} alt="" />
-                                <h1>{drink.strDrink}</h1>
-                                <div className={styles.app_btns}>
-                                    <button onClick={() => handleDetail(drink)}>Detail</button>
-                                    <button>Favorite</button>
+                    data ?
+                        data.drinks && data.drinks.map(drink => {
+                            return (
+                                <div key={drink.idDrink} className={styles.app_card}>
+                                    <img src={drink.strDrinkThumb} alt="" />
+                                    <h1>{drink.strDrink}</h1>
+                                    <div className={styles.app_btns}>
+                                        <button onClick={() => handleDetail(drink)}>Detail</button>
+                                        <button>Favorite</button>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })
+                            )
+                        })
+                        : <div className={styles.app_search}>
+                            <img src={search} />
+                            <h1>Search a cocktail...</h1>
+                        </div>
                 }
             </div>
         </div>
