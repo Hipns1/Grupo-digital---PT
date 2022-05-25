@@ -9,3 +9,12 @@ export const typesLogin ={
 export const typesRegister ={
     register: 'register'
 }
+
+export const typesFavoritos = {
+    add: 'addFavorito',
+    list: 'listFavoritos',
+    edit: 'editFavorito',
+    delete: 'deleteFavorito',
+    detail: 'detailFavorito',
+    search: 'searchFavorito'
+}
