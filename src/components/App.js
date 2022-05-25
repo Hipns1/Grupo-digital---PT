@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { addSync } from '../Redux/actions/actionFavorito';
 import styles from "../Styles/App.module.scss"
 import search from "../Styles/Images/SEARCH.svg"
 
@@ -21,12 +22,15 @@ const App = () => {
         setQuery(e.target.value)
         getData(busqueda)
     }
-
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleDetail = (drink) => {
         localStorage.setItem('drink', JSON.stringify(drink))
         navigate("/detail")
+    }
+    const handleAdd = (drink) =>{
+        dispatch(addSync(drink))
     }
 
     return (
@@ -48,7 +52,7 @@ const App = () => {
                                     <h1>{drink.strDrink}</h1>
                                     <div className={styles.app_btns}>
                                         <button onClick={() => handleDetail(drink)}>Detail</button>
-                                        <button>Favorite</button>
+                                        <button onClick={handleAdd}>Favorite</button>
                                     </div>
                                 </div>
                             )

@@ -16,11 +16,6 @@ export const favoritosReducers = (state = initialState, action) => {
         favoritos: [...action.payload]
       }
 
-    case typesFavoritos.edit:
-      return {
-        ...state
-      }
-
     case typesFavoritos.delete:
       return {
         favoritos: state.favoritos.filter(p => p.email !== action.payload)
