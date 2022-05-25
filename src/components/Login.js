@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { loginEmailPassAsync, loginFacebook, loginGoogle } from '../Redux/actions/actionLogin';
+import { loginEmailPassAsync, loginGoogle } from '../Redux/actions/actionLogin';
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string()

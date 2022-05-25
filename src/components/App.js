@@ -30,11 +30,14 @@ const App = () => {
         navigate("/login")
     }
 
+    const handleDetail = (drink) => {
+        localStorage.setItem('drink', JSON.stringify(drink))
+        navigate("/detail")
+    }
+
     useEffect(() => {
         getData(random)
     }, [])
-
-    console.log(data)
 
     return (
         <div>
@@ -52,6 +55,8 @@ const App = () => {
                             <h1>{drink.strDrink}</h1>
                             <img src={drink.strDrinkThumb} alt=""
                                 style={{ width: "200px" }} />
+                            <button onClick={() => handleDetail(drink)}>Detail</button>
+                            <button>Favorite</button>
                         </div>
                     )
                 })
