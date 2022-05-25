@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteAsync } from '../Redux/actions/actionFavorito'
+import { deleteAsync, listAsynFavoritos } from '../Redux/actions/actionFavorito'
 
 const Listar = () => {
     const dispatch = useDispatch()
-  const { favoritos } = useSelector(store => store.favoritos)
+    const { favoritos } = useSelector(store => store.favoritos)
+  useEffect(() => {
+    dispatch(listAsynFavoritos())
+  },[])
 
   return (
     <div>
