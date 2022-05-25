@@ -1,6 +1,7 @@
 import styles from "../Styles/NavBar.module.scss";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
 
@@ -36,8 +37,9 @@ const NavBar = () => {
             transition={{ duration: 1 }}
             className={styles.nav}>
             <nav className={styles.nav_container}>
-                <div className={styles.nav_logo}>
-                    <h1>Cocktails.</h1>
+                <div 
+                className={styles.nav_logo}>
+                    <Link to="/home"><h1>Cocktails.</h1></Link>
                 </div>
                 <input type="checkbox" id="check" className={styles.nav_menu} />
                 <label

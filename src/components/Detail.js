@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import styles from "../Styles/Detail.module.scss"
 
 const Detail = () => {
 
@@ -11,12 +12,12 @@ const Detail = () => {
     }
 
     return (
-        <div>
-            <div>
-                <button onClick={() => handleBack()}>BACK...</button>
+        <div className={styles.detail_container}>
+            <div className={styles.detail_back}>
+                <button onClick={() => handleBack()}> <i class="fa-solid fa-angle-left"></i> Back...</button>
             </div>
-            <div>
-                <h1>{drinkStorage.strDrink}</h1>
+            <div className={styles.detail_detail}>
+                <h2>{drinkStorage.strDrink}</h2>
                 <img src={drinkStorage.strDrinkThumb} alt=""
                     style={{ width: "200px" }} />
                 <h1>Category: <span>{drinkStorage.strCategory}</span></h1>
@@ -25,7 +26,7 @@ const Detail = () => {
                 {drinkStorage.strTags
                     ? <h1>Tags: <span>{drinkStorage.strTags}</span></h1>
                     : <h1>Tags:<span> No have tags</span></h1>}
-                <h1>Instructions: {drinkStorage.strInstructions}</h1>
+                <h1>Instructions: <span>{drinkStorage.strInstructions}</span></h1>
                 <ul>
                     <h1>Ingredients:</h1>
                     {

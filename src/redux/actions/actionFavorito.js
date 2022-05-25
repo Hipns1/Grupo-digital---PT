@@ -7,24 +7,25 @@ const nombreEntidad = "favoritosBD"
 
 
 //-------------------delete--------------------//
-export const deleteAsync = (emailUsuario) => {
+export const deleteAsync = (id) => {
 
   return async (dispatch) => {
+    console.log(id)
     const colleccionTraer = collection(db, nombreEntidad)
-    const q = query(colleccionTraer, where("email", "==", emailUsuario))
+    const q = query(colleccionTraer, where("idDrink", "==", id))
     const traerDatosQ = await getDocs(q)
     traerDatosQ.forEach((docum => {
       deleteDoc(doc(db, nombreEntidad, docum.id))
     }))
-    dispatch(deleteSync(emailUsuario))
+    dispatch(deleteSync(id))
     dispatch(listAsynFavoritos())
   }
 }
 
-export const deleteSync = (emailUsuario) => {
+export const deleteSync = (id) => {
   return {
     type: typesFavoritos.delete,
-    payload: emailUsuario
+    payload: id
   }
 
 }
@@ -37,12 +38,9 @@ export const listAsynFavoritos = () => {
     colleccionTraer.forEach((doc) => {
       favoritos.push({
         ...doc.data()
-
-
       })
     })
     dispatch(listSync(favoritos))
-
   }
 }
 
@@ -61,7 +59,6 @@ export const addAsync = (favorito) => {
     addDoc(collection(db, nombreEntidad), favorito)
       .then(resp => {
         dispatch(addSync(favorito))
-        //  dispatch(listAsyn())
       })
       .catch(error => {
         console.warn(error);

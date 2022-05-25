@@ -53,13 +53,17 @@ const App = () => {
                         data.drinks && data.drinks.map(drink => {
                             return (
                                 <div key={drink.idDrink} className={styles.app_card}>
-                                    <img src={drink.strDrinkThumb} alt="" />
-                                    <h1>{drink.strDrink}</h1>
+                                    <div className={styles.app_card__top}>
+                                        <img src={drink.strDrinkThumb} alt="" />
+                                        <h1>{drink.strDrink}</h1>
+                                    </div>
                                     <div className={styles.app_btns}>
                                         <button 
-                                        styles={{backgroundColor: '#f5f5f5'}}
+                                        style={{backgroundColor: '#D457FF'}}
                                         onClick={() => handleDetail(drink)}>Detail</button>
-                                        <button onClick={() => handleAdd(drink)}>Favorite</button>
+                                        <button 
+                                        style={{backgroundColor: '#FF4D38'}}
+                                        onClick={() => handleAdd(drink)}>Favorite</button>
                                     </div>
                                 </div>
                             )

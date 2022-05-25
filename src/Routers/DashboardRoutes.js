@@ -14,7 +14,7 @@ const DashboardRoutes = () => {
 					<Route path='/home' element={<App />} />
 					<Route path="*" element={<Navigate to="/home" />} />
 					<Route path='/detail' element={<Detail />} />
-					<Route path='/favotite' element={<Listar />} />
+					<Route path='/favorite' element={<Listar />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

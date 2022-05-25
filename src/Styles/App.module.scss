@@ -11,7 +11,7 @@
         align-items: center;
         justify-content: center;
 
-        input{
+        input {
             border: 0.1px solid rgb(197, 197, 197);
             height: 40px;
             padding: 16px;
@@ -20,60 +20,76 @@
         }
     }
 
-    .app_card__container{
-        width: 100%;
-        padding: 20px;
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
+    
+}
+.app_card__container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-        .app_card{
-            width: 250px;
-            height: 350px;
-            margin: 20px 40px ;
-            display: flex;
-            flex-direction: column;
-            
-            h1{
+    .app_card {
+        width: 250px;
+        height: 350px;
+        margin: 20px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.47);
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.47);
+
+        .app_card__top {
+            h1 {
                 font-size: 20px;
                 margin-top: 10px;
+                margin-left: 15px;
             }
 
-            img{
+            img {
                 width: 100%;
                 object-fit: cover;
             }
-
-            .app_btns{
-                display: flex;
-                justify-content: space-evenly;
-                margin-top: 10px;
-                button{
-                    height: 35px;
-                    width: 80px;
-                    font-weight: bold;
-                    font-size: 14px;
-                    border-radius: 4px;
-                }
-            }
         }
 
-        .app_search{
-            width: 100%;
-            height: 500px;
+        .app_btns {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            img{
-                width: 300px;
+            justify-content: space-evenly;
+            margin-top: 10px;
+
+            button {
+                height: 35px;
+                width: 80px;
+                font-weight: bold;
+                font-size: 14px;
+                border-radius: 4px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: white;
+                margin-bottom: 5px;
             }
-            h1{
-                font-size: 20px;
-                margin-top: 10px;
-                color:rgb(126, 126, 126);
-            }
+        }
+    }
+
+    .app_search {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+
+        img {
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: rgb(126, 126, 126);
         }
     }
 }

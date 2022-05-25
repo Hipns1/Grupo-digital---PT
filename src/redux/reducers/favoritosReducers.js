@@ -18,7 +18,7 @@ export const favoritosReducers = (state = initialState, action) => {
 
     case typesFavoritos.delete:
       return {
-        favoritos: state.favoritos.filter(p => p.email !== action.payload)
+        favoritos: state.favoritos.filter(p => p.id !== action.payload)
       }
 
     default:
