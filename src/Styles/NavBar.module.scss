@@ -1,0 +1,101 @@
+.nav_container {
+    background-color: #e0e0e0e0;
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_menu {
+    display: none;
+}
+
+.nav_label {
+    display: none;
+    cursor: pointer;
+
+
+    @media (max-width: 768px) {
+        display: block;
+        font-size: 26px;
+        margin-right: 50px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    @media (max-width: 500px) {
+        margin-right: 20px;
+    }
+}
+
+.nav_logo {
+    margin-left: 50px;
+
+    @media (max-width: 500px) {
+        margin-left: 20px;
+    }
+
+    h1 {
+        font-size: 42px;
+        font-weight: bold;
+        font-style: italic;
+        background: #ff0000;
+        background: -webkit-linear-gradient(to right, #ff0000, #9932cc);
+        background: linear-gradient(to right, #ff0000, #9932cc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+}
+
+.nav_options {
+    margin-right: 50px;
+    width: 500px;
+    display: flex;
+    justify-content: flex-end;
+    left: -200vw;
+    transition: 0.3s all ease-in-out;
+
+    @media (max-width: 768px) {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #e0e0e0;
+        text-align: center;
+        transition: 0.3s all ease;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        top: 8vh;
+        padding: 16px 0px;
+        a {
+            margin-top: 30px;
+        }
+    }
+
+    a {
+        font-size: 22px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        transition: 0.3s all ease-in-out;
+        color: #170939;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        i {
+            font-size: 26px;
+            color: #170939;
+        }
+    }
+}
+
+.nav_menu:checked~.nav_options {
+    left: 0vw;
+}
