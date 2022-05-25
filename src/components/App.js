@@ -59,7 +59,7 @@ const App = () => {
                                         <button 
                                         styles={{backgroundColor: '#f5f5f5'}}
                                         onClick={() => handleDetail(drink)}>Detail</button>
-                                        <button onClick={handleAdd}>Favorite</button>
+                                        <button onClick={() => handleAdd(drink)}>Favorite</button>
                                     </div>
                                 </div>
                             )
