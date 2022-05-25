@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { addSync } from '../Redux/actions/actionFavorito';
 import { logoutAsync } from '../Redux/actions/actionLogin';
 
 const App = () => {
@@ -34,6 +35,9 @@ const App = () => {
         localStorage.setItem('drink', JSON.stringify(drink))
         navigate("/detail")
     }
+    const handleAdd = (drink) =>{
+        dispatch(addSync(drink))
+    }
 
     useEffect(() => {
         getData(random)
@@ -56,7 +60,7 @@ const App = () => {
                             <img src={drink.strDrinkThumb} alt=""
                                 style={{ width: "200px" }} />
                             <button onClick={() => handleDetail(drink)}>Detail</button>
-                            <button>Favorite</button>
+                            <button onClick={() => handleAdd(drink)}>Favorite</button>
                         </div>
                     )
                 })
