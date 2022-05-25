@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { addSync } from '../Redux/actions/actionFavorito';
 import styles from "../Styles/App.module.scss"
 
 const App = () => {
@@ -55,7 +56,7 @@ const App = () => {
                                 <h1>{drink.strDrink}</h1>
                                 <div className={styles.app_btns}>
                                     <button onClick={() => handleDetail(drink)}>Detail</button>
-                                    <button>Favorite</button>
+                                    <button onClick={handleAdd}>Favorite</button>
                                 </div>
                             </div>
                         )
