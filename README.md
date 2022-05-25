@@ -1,6 +1,6 @@
 # Cocteles 💻
 ## Description 📚
- Consuming a cocktail api where you can add and remove from an order 
+ Consume a cocktail API where you can add and remove from an order. You can also filter and search the products 
 ## Installation 💡 
  You must install react, redux, styledComponents 
  
