@@ -30,7 +30,7 @@ const AppRouters = () => {
 	if (checking) {
 		return (
 			<div className='loading_container'>
-				LOGIN
+				CARGANDO...
 			</div>
 		)
 	}
