@@ -4,7 +4,7 @@ import { deleteAsync, listAsynFavoritos } from '../Redux/actions/actionFavorito'
 
 const Listar = () => {
     const dispatch = useDispatch()
-    const { favoritos } = useSelector(store => store.favoritos)
+    const { favoritos } = useSelector(store => store.favorito)
   useEffect(() => {
     dispatch(listAsynFavoritos())
   },[])
@@ -29,13 +29,10 @@ const Listar = () => {
                 <td>{p.strCategory}</td>
                 <td>
                   <button margin={10} onClick={() => dispatch(deleteAsync(p.id))}> <img onClick={() => dispatch(deleteAsync(p.id))} width={20} src='https://res.cloudinary.com/danimel/image/upload/v1646015682/trash_2_vcdean.png' /> </button>
-
                 </td>
-
               </tr>
             ))
           }
-
         </tbody>
       </table>
     </div>
