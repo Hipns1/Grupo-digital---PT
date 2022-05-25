@@ -57,6 +57,7 @@ export const listSync = (favorito) => {
 //-------------agregar---------------//
 export const addAsync = (favorito) => {
   return (dispatch) => {
+    console.log(favorito)
     addDoc(collection(db, nombreEntidad), favorito)
       .then(resp => {
         dispatch(addSync(favorito))
