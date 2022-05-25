@@ -1,18 +1,18 @@
-import { applyMiddleware, combineReducers, compose, createStore } from "redux"
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import { loginReducers } from "../reducers/loginReducers";
+import { registerReducers } from "../reducers/registerReducers";
 import thunk from "redux-thunk";
-/* import { productosReducers } from "../reducers/productosReducers";
-import { userReducers } from "../reducers/UserReducers" */
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const reducers = combineReducers({
-  /* users: userReducers,
-  productos: productosReducers, */
+    login: loginReducers,
+    register: registerReducers,
 })
 
 export const store = createStore(
-  reducers,
-  composeEnhancers(
-    applyMiddleware(thunk)
-  )
-);
+    reducers,
+    composeEnhancers(
+        applyMiddleware(thunk)
+    )
+)

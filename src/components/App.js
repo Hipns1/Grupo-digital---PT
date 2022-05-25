@@ -1,25 +1,50 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { logoutAsync } from '../Redux/actions/actionLogin';
 
 const App = () => {
 
     const [data, setData] = useState([])
+    const [query, setQuery] = useState('')
 
-    const random = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+    const random = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    const busqueda = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
 
-    const getData = async () => {
-        const response = await fetch(random)
+    const getData = async (url) => {
+        const response = await fetch(url)
         const data = await response.json()
         setData(data)
     }
 
+    const handleChange = (e) => {
+        setQuery(e.target.value)
+        getData(busqueda)
+    }
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(logoutAsync())
+        navigate("/login")
+    }
+
     useEffect(() => {
-        getData()
+        getData(random)
     }, [])
 
     console.log(data)
 
     return (
         <div>
+            <h1>Cocktail App</h1>
+            <button onClick={() => handleLogout()}>LOGOUT</button>
+            <input
+                type="text"
+                placeholder="Buscar"
+                onChange={handleChange}
+            />
             {
                 data.drinks && data.drinks.map(drink => {
                     return (
